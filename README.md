@@ -15,9 +15,10 @@ using CREATE_FILE_WINAPI = HANDLE(WINAPI*)(LPCSTR, DWORD, DWORD, LPSECURITY_ATTR
 using READ_FILE_WINAPI = BOOL(WINAPI*)(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead,	LPOVERLAPPED lpOverlapped);
 
 //create class winapi-importer
-WinApiImport<CREATE_FILE_WINAPI> api_parser("CreateFileA","kernel32.dll");	
+WinApiImport<CREATE_FILE_WINAPI> api_parser("CreateFileA", "kernel32.dll");
 //if import is invalid or wrong - return null pointer
-auto create_file_func = api_parser.get_function();
+//or auto
+std::function<CREATE_FILE_WINAPI> func_api = api_parser.get_function();
 
 //open file for reading
 auto hFile = create_file_func("log.txt", GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_ALWAYS,
