@@ -40,7 +40,7 @@ public:
 	}
 
 	
-	T get_function() {
+	std::function<T> get_function() {
 		try
 		{
 			HMODULE krnl32, hDll;
@@ -86,7 +86,7 @@ public:
 			hDll = hash_LoadLibraryA(m_module_name.c_str());
 
 			api_func = parse_export_table(hDll, api_hash, m_len, m_seed);
-			return static_cast<T>(api_func);
+			return std::move(std::function<T>(static_cast<T*>(api_func)));
 		}
 		catch (...)
 		{
@@ -101,13 +101,14 @@ public:
 
 private:
 	const std::string m_func_name, m_module_name;
-	int m_len, m_seed;
+	int m_len;
+	unsigned m_seed;
 	
 	HMODULE(WINAPI* temp_LoadLibraryA)(__in LPCSTR file_name) = nullptr;
 
 	HMODULE hash_LoadLibraryA(LPCSTR file_name)
 	{
-		return temp_LoadLibraryA(file_name);
+		return std::move(temp_LoadLibraryA(file_name));
 	}
 	
 	LPVOID parse_export_table(HMODULE module, DWORD api_hash, int len, unsigned seed){
