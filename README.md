@@ -11,8 +11,9 @@ Importing win api functions calling by hash-value function
 ### How to using?
 ```c++
 //typedef functions
-using CREATE_FILE_WINAPI = HANDLE(WINAPI*)(LPCSTR, DWORD, DWORD, LPSECURITY_ATTRIBUTES, DWORD, DWORD, HANDLE);
-using READ_FILE_WINAPI = BOOL(WINAPI*)(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead,	LPOVERLAPPED lpOverlapped);
+using CREATE_FILE_WINAPI = HANDLE (LPCSTR, DWORD, DWORD, LPSECURITY_ATTRIBUTES, DWORD, DWORD, HANDLE);
+using READ_FILE_WINAPI = BOOL (HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead,	LPOVERLAPPED lpOverlapped);
+using GET_SIZE_FILE_WINAPI = DWORD (HANDLE  hFile, unsigned long* lpFileSizeHigh);
 
 //create class winapi-importer
 WinApiImport<CREATE_FILE_WINAPI> api_parser("CreateFileA", "kernel32.dll");
