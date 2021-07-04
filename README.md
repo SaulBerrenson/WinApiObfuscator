@@ -9,7 +9,7 @@ Importing win api functions calling by hash-value function
 
 
 ### How to using?
-```
+```c++
 //typedef functions
 using CREATE_FILE_WINAPI = HANDLE(WINAPI*)(LPCSTR, DWORD, DWORD, LPSECURITY_ATTRIBUTES, DWORD, DWORD, HANDLE);
 using READ_FILE_WINAPI = BOOL(WINAPI*)(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead,	LPOVERLAPPED lpOverlapped);
