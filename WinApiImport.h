@@ -100,7 +100,7 @@ public:
 	
 
 private:
-	const std::string& m_func_name, m_module_name;
+	const std::string m_func_name, m_module_name;
 	int m_len, m_seed;
 	
 	HMODULE(WINAPI* temp_LoadLibraryA)(__in LPCSTR file_name) = nullptr;
