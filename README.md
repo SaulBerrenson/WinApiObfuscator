@@ -22,7 +22,7 @@ WinApiImport<CREATE_FILE_WINAPI> api_parser("CreateFileA", "kernel32.dll");
 std::function<CREATE_FILE_WINAPI> func_api = api_parser.get_function();
 
 //open file for reading
-auto hFile = create_file_func("log.txt", GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_ALWAYS,
+auto hFile = func_api("log.txt", GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_ALWAYS,
 		FILE_ATTRIBUTE_NORMAL, nullptr);
 
 ```
