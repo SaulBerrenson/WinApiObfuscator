@@ -25,4 +25,8 @@ std::function<CREATE_FILE_WINAPI> func_api = api_parser.get_function();
 auto hFile = func_api("log.txt", GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_ALWAYS,
 		FILE_ATTRIBUTE_NORMAL, nullptr);
 
+
+//or using like this
+const auto f_create_file =WinApiImport<CREATE_FILE_WINAPI>::get_func("BCryptDecrypt", "bcrypt.dll");        
+
 ```
