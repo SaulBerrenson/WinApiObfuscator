@@ -2,6 +2,8 @@
 Header-only c++ library for obfuscation import winapi functions.
 This based on https://github.com/XShar/Win_API_Obfuscation and https://xakep.ru/2018/12/06/hidden-winapi/
 
+It's hide your table of import functions.
+
 
 ### How it work?
 
