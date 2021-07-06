@@ -4,6 +4,7 @@
 
 #include <string>
 #include <Windows.h>
+#include <functional>
 
 typedef struct _UNICODE_STRING
 {
@@ -39,6 +40,11 @@ public:
 		
 	}
 
+	static std::function<T> get_func(const std::string& func_name, const std::string& module_name, unsigned seed = 0)
+	{
+		WinApiImport<T> api_import(func_name, module_name, seed);
+		return api_import.get_function();
+	}
 	
 	std::function<T> get_function() {
 		try
