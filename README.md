@@ -29,6 +29,6 @@ auto hFile = func_api("log.txt", GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_
 
 
 //or using like this
-const auto f_create_file =WinApiImport<CREATE_FILE_WINAPI>::get_func("BCryptDecrypt", "bcrypt.dll");        
+const auto f_create_file =WinApiImport<CREATE_FILE_WINAPI>::get("BCryptDecrypt", "bcrypt.dll");        
 
 ```
